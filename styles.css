@@ -138,7 +138,7 @@ header {
 .count-btn.active { border-color: var(--blue); background: var(--blue-light); color: var(--blue); font-weight: 600; }
 
 /* ── History table ──────────────────────── */
-.history-section { background: var(--surface); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+.history-section { background: var(--surface); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); overflow-x: auto; }
 .history-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .history-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); color: var(--text-muted); font-weight: 600; }
 .history-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
@@ -254,9 +254,23 @@ header {
 .mock-timer.warning { color: #dc2626; animation: pulse 1s ease-in-out infinite; }
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .6; } }
 
+@media (max-width: 768px) {
+  .category-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .mock-nav-bar { padding: 8px 16px; }
+  .mock-dot { width: 22px; height: 22px; font-size: 9px; }
+}
+
 @media (max-width: 600px) {
   .main { padding: 20px 16px; }
   header { padding: 0 16px; }
+  .header-user span { display: none; }
   .auth-card { padding: 28px 20px; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .question-card { padding: 20px 16px; }
+  .question-text { font-size: 15px; }
+  .result-card { padding: 24px 16px; }
+  .mock-timer { font-size: 16px; }
+  .mock-exam-banner { flex-direction: column; align-items: flex-start; }
+  .btn-mock { width: 100%; justify-content: center; }
+  .mock-banner-title { font-size: 15px; }
 }
