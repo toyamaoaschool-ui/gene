@@ -391,6 +391,7 @@ function renderDashboard() {
   const mockHistory = state.history.filter(h => h.categoryId === "mock");
   const bestMock    = mockHistory.length > 0
     ? Math.max(...mockHistory.map(h => Math.round(h.score / h.total * 100))) : null;
+  const passCount   = mockHistory.filter(h => Math.round(h.score / h.total * 100) >= MOCK_PASS_PCT).length;
 
   const categoryCards = CATEGORIES.map(cat => {
     const s = stats.byCategory[cat.id];
@@ -461,7 +462,7 @@ function renderDashboard() {
         <p>今日も生成AIパスポートの合格を目指して学習しましょう</p>
       </div>
       <div class="stats-row">
-        <div class="stat-card"><div class="stat-value">${stats.total}</div><div class="stat-label">学習セッション数</div></div>
+        <div class="stat-card"><div class="stat-value">${passCount}</div><div class="stat-label">合格圏達成回数</div></div>
         <div class="stat-card"><div class="stat-value">${stats.avgScore}<small style="font-size:16px">%</small></div><div class="stat-label">平均正解率</div></div>
         <div class="stat-card"><div class="stat-value">${QUESTIONS.length}</div><div class="stat-label">総問題数</div></div>
         <div class="stat-card"><div class="stat-value">${CATEGORIES.length}</div><div class="stat-label">カテゴリー数</div></div>
